@@ -1,2 +1,5 @@
 # IDE files
 .vscode/
+
+# Temp file
+.DS_Store
