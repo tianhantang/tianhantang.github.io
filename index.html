@@ -402,6 +402,26 @@
   }
   .pubs .title { color: var(--ink); font-weight: 500; }
   .pubs .venue { font-style: italic; }
+  .pubs .author {
+    color: var(--ink);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .pubs .tag {
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent-soft);
+    padding: 1px 6px;
+    margin-left: 6px;
+    vertical-align: 2px;
+  }  
   .pubs .year {
     font-family: var(--mono);
     font-style: normal;
@@ -564,30 +584,34 @@
       <p class="expertise-prose">
         At <b>Lily MedTech</b>, contributed to the development and 2021 commercial release of <b>COCOLY</b>, a ring-array USCT scanner for breast imaging. Led several internal R&amp;D projects on <b>novel imaging methods</b>.
         <br><br>
-        PhD work proposed a <b>dictionary-based reconstruction</b> that delivers high-resolution USCT echo images under reduced data acquisition — a path toward faster, cheaper scans.
+        PhD work proposed a <b>dictionary-based reconstruction method</b> that delivers high-resolution USCT echo images under reduced data acquisition — a path toward faster, cheaper scans.
       </p>
     </div>
 
     <!-- RIGHT: Publications -->
     <div class="col">
-      <h3>Selected publications &amp; IP · recent 3 years</h3>
+      <h3>Selected publications · recent 3 years</h3>
 
       <ol class="pubs">
         <li>
-          <span class="title placeholder">Publication title — to be filled in</span>.
-          <span class="venue">Venue / journal name</span><span class="year">2024</span>
+          <span class="author">Tianhan Tang</span>, Takashi Azuma, Shin-Ichiro Umemura.
+          <span class="title">Attenuation estimation from posterior echoes in RingEcho ultrasound tomography</span>.
+          <span class="venue">2025 IEEE International Ultrasonics Symposium</span>, Utrecht, Netherlands, pp 1–4. <span class="year">2025</span>
         </li>
         <li>
-          <span class="title placeholder">Publication title — to be filled in</span>.
-          <span class="venue">Venue / conference name</span><span class="year">2023</span>
+          <span class="author">Tianhan Tang</span>, Ichiro Sakuma, Takashi Azuma, Shin-Ichiro Umemura, Atsushi Otsubo, Toshihide Iwahashi, Hirofumi Nakamura. 
+          <span class="title">Towards minimizing data-acquisition for a pixel-based ultrasound computed tomography echo imaging method</span>.
+          <span class="venue">Acoustical Science and Technolog</span>, vol 26, issue 4, pp 262–273. <span class="year">2025</span>
         </li>
         <li>
-          <span class="title placeholder">Patent title — to be filled in</span>.
-          <span class="venue">JP &amp; EP filing</span><span class="year">2023</span>
+          <span class="author">Tianhan Tang</span>, Toshihide Iwahashi, Atsushi Otsubo, Takashi Azuma.
+          <span class="title">Contrast enhancement for Ring-Echo image: A probability weighting approach to synthetic aperture reconstruction</span>.
+          <span class="venue">2024 IEEE Ultrasonics, Ferroelectrics, and Frequency Control Joint Symposium</span>, Taipei, Taiwan, pp 1–4. <span class="year">2024</span>
         </li>
         <li>
-          <span class="title placeholder">Publication / talk title — to be filled in</span>.
-          <span class="venue">Venue</span><span class="year">2022</span>
+          <span class="author">Tianhan Tang</span>, Takashi Azuma, Atsushi Otsubo, Hirofumi Nakamura, Toshihide Iwahashi.
+          <span class="title">Contrast Enhancement for Ring-Echo Imaging using Temporal Dynamic Bandpass Filter</span>.
+          <span class="venue">2023 IEEE International Ultrasonics Symposium</span>, Montreal, Canada, pp 1–4. <span class="year">2023</span>
         </li>
       </ol>
     </div>
