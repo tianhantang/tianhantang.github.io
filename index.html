@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Self-Introduction — Tianhan Tang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #1a1a1a;
+    --ink-soft:  #4a4a4a;
+    --ink-mute:  #8a8a8a;
+    --paper:     #fafaf7;
+    --rule:      #e2e0d8;
+    --accent:    #b54a2a;       /* terracotta — picks up Red Gate */
+    --accent-soft:#c98a72;
+
+    --serif:  "Newsreader", "Times New Roman", serif;
+    --sans:   "Inter", system-ui, sans-serif;
+    --mono:   "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #efece5;
+    font-family: var(--sans);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    padding: 48px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+  }
+
+  /* ---- slide frame ---- */
+  .slide {
+    width: 100%;
+    max-width: 1280px;
+    aspect-ratio: 16 / 9;
+    background: var(--paper);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 24px 60px -20px rgba(0,0,0,0.18);
+    position: relative;
+    overflow: hidden;
+    padding: 56px 64px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* subtle paper grain */
+  .slide::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(0,0,0,0.012) 0, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(0,0,0,0.015) 0, transparent 40%);
+    pointer-events: none;
+  }
+
+  /* ---- common header ---- */
+  .slide-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 36px;
+  }
+  .slide-head .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .slide-head .page-no {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.06em;
+  }
+  .slide-head .page-no b { color: var(--ink); font-weight: 500; }
+
+  /* ---- common footer ---- */
+  .slide-foot {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* =================================================================
+     SLIDE 1 — Cover
+     ================================================================= */
+  .cover .body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 64px;
+    align-items: end;
+  }
+  .cover .lede .kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .cover h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(48px, 6.2vw, 86px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .cover h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--accent);
+  }
+  .cover .role {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 22px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    max-width: 480px;
+  }
+
+  .cover .meta {
+    border-left: 1px solid var(--rule);
+    padding-left: 36px;
+    padding-bottom: 6px;
+  }
+  .cover .meta-block + .meta-block { margin-top: 22px; }
+  .cover .meta-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+  }
+  .cover .meta-value {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .cover .meta-value .muted { color: var(--ink-mute); }
+
+  /* decorative mark in corner */
+  .cover .mark {
+    position: absolute;
+    top: 56px;
+    right: 64px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cover .mark::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  /* =================================================================
+     SLIDE 2 — Academic & Work background
+     ================================================================= */
+  .bio .body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 0.95fr 1.4fr;
+    gap: 56px;
+    min-height: 0;
+  }
+
+  .bio h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-bottom: 28px;
+  }
+  .bio h2 em { font-style: italic; color: var(--accent); font-weight: 300; }
+
+  .bio .intro {
+    font-family: var(--serif);
+    font-size: 16.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 380px;
+    margin-bottom: 28px;
+  }
+
+  .timeline {
+    list-style: none;
+    border-left: 1px solid var(--rule);
+    padding-left: 22px;
+  }
+  .timeline li {
+    position: relative;
+    padding-bottom: 22px;
+  }
+  .timeline li:last-child { padding-bottom: 0; }
+  .timeline li::before {
+    content: "";
+    position: absolute;
+    left: -26px;
+    top: 7px;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1.5px solid var(--accent);
+  }
+  .timeline .year {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em;
+    margin-bottom: 3px;
+  }
+  .timeline .what {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .timeline .what b { font-weight: 500; }
+  .timeline .what .place {
+    display: block;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    margin-top: 2px;
+    letter-spacing: 0.01em;
+  }
+
+  /* right: photo grid */
+  .photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 14px;
+    min-height: 0;
+  }
+  .photo {
+    position: relative;
+    overflow: hidden;
+    background: #d9d6cd;
+  }
+  .photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.92);
+  }
+  .photo .cap {
+    position: absolute;
+    left: 10px;
+    bottom: 8px;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(26,26,26,0.62);
+    padding: 4px 8px;
+    backdrop-filter: blur(2px);
+  }
+
+  /* span the company photo across two columns */
+  .photo.wide {
+    grid-column: 1 / span 2;
+  }
+  /* portrait photos in top row */
+  .photo.tall img { object-position: center 30%; }
+
+  /* =================================================================
+     SLIDE 3 — Focus + Publications
+     ================================================================= */
+  .focus h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-bottom: 8px;
+  }
+  .focus h2 em { font-style: italic; color: var(--accent); font-weight: 300; }
+  .focus .sub {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink-mute);
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .focus .body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+
+  .col h3 {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-mute);
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* expertise pills */
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    padding: 5px 10px;
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    background: #fff;
+  }
+  .pill.solid {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .expertise-prose {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .expertise-prose b {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* publications list */
+  .pubs {
+    list-style: none;
+    counter-reset: pub;
+  }
+  .pubs li {
+    counter-increment: pub;
+    position: relative;
+    padding-left: 32px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px dashed var(--rule);
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .pubs li:last-child { border-bottom: none; margin-bottom: 0; }
+  .pubs li::before {
+    content: counter(pub, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .pubs .title { color: var(--ink); font-weight: 500; }
+  .pubs .venue { font-style: italic; }
+  .pubs .year {
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-left: 6px;
+  }
+
+  /* placeholder styling */
+  .placeholder {
+    color: var(--ink-mute);
+    font-style: italic;
+  }
+  .placeholder::after {
+    content: " ⟵ placeholder";
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 10px;
+    color: var(--accent-soft);
+    letter-spacing: 0.06em;
+  }
+
+  /* print */
+  @media print {
+    body { padding: 0; background: white; gap: 0; }
+    .slide {
+      box-shadow: none;
+      page-break-after: always;
+      max-width: none;
+      width: 100%;
+      height: 100vh;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- =================================================================
+     SLIDE 1 — COVER
+     ================================================================= -->
+<section class="slide cover">
+  <div class="mark">Self-introduction · 2026</div>
+
+  <div class="slide-head" style="border:none; padding:0; margin:0;"></div>
+
+  <div class="body">
+    <div class="lede">
+      <div class="kicker">Tang Tianhan · 唐 天漢</div>
+      <h1>Medical&nbsp;ultrasound,<br>from <em>silicon</em> to <em>system</em>.</h1>
+      <p class="role">Researcher, Engineer.<br>
+        Seven years building clinical USCT hardware and reconstruction algorithms at a venture-backed medtech startup.</p>
+    </div>
+
+    <aside class="meta">
+      <div class="meta-block">
+        <div class="meta-label">Domain</div>
+        <div class="meta-value">Ultrasound imaging · USCT<br><span class="muted">Reconstruction · HIFU · Front-end signal processing</span></div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Currently</div>
+        <div class="meta-value">Exploring a new venture<br><span class="muted">Co-founder candidate</span></div>
+      </div>
+      <div class="meta-block">
+        <div class="meta-label">Based in</div>
+        <div class="meta-value">Tokyo, Japan</div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="slide-foot">
+    <span>Tianhan Tang</span>
+    <span>01 / 03</span>
+  </div>
+</section>
+
+
+<!-- =================================================================
+     SLIDE 2 — BACKGROUND
+     ================================================================= -->
+<section class="slide bio">
+  <div class="slide-head">
+    <span class="eyebrow">Background</span>
+    <span class="page-no"><b>02</b> / 03</span>
+  </div>
+
+  <div class="body">
+    <div class="left">
+      <h2>Fifteen years<br>around <em>one</em> wave.</h2>
+      <p class="intro">A continuous arc through medical ultrasound — from FPGA front-ends, through robotic HIFU therapy, into commercial USCT systems and PhD-level reconstruction.</p>
+
+      <ul class="timeline">
+        <li>
+          <div class="year">2009 — 2013</div>
+          <div class="what"><b>Undergraduate</b> in Wuhan, China
+            <span class="place">Huazhong Univ. of Science &amp; Technology</span></div>
+        </li>
+        <li>
+          <div class="year">2013 — 2019</div>
+          <div class="what"><b>Master's &amp; PhD</b>, University of Tokyo
+            <span class="place">BMPE Lab · US-guided HIFU, then USCT reconstruction</span></div>
+        </li>
+        <li>
+          <div class="year">2016 — 2023</div>
+          <div class="what"><b>R&amp;D Engineer</b>, Lily MedTech Inc.
+            <span class="place">USCT for breast imaging · COCOLY commercial release, 2021</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="photos">
+      <figure class="photo tall">
+        <img src="images/redgate.jpg" alt="University of Tokyo Red Gate, 2013" />
+        <figcaption class="cap">Red Gate · 2013</figcaption>
+      </figure>
+      <figure class="photo tall">
+        <img src="images/bmpe.jpg" alt="BMPE Lab, M1 year" />
+        <figcaption class="cap">BMPE Lab · M1</figcaption>
+      </figure>
+      <figure class="photo wide">
+        <img src="images/lily.jpg" alt="Lily MedTech team, COCOLY launch 2021" />
+        <figcaption class="cap">Lily MedTech · COCOLY launch, 2021</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="slide-foot">
+    <span>Education &amp; experience</span>
+    <span>Tianhan Tang</span>
+  </div>
+</section>
+
+
+<!-- =================================================================
+     SLIDE 3 — FOCUS + PUBLICATIONS
+     ================================================================= -->
+<section class="slide focus">
+  <div class="slide-head">
+    <span class="eyebrow">Expertise &amp; output</span>
+    <span class="page-no"><b>03</b> / 03</span>
+  </div>
+
+  <h2>What I <em>build</em>, what I <em>publish</em>.</h2>
+  <p class="sub">A bias toward problems where physics, signal processing and clinical constraints meet.</p>
+
+  <div class="body">
+    <!-- LEFT: Expertise -->
+    <div class="col">
+      <h3>Core focus</h3>
+
+      <div class="pills">
+        <span class="pill solid">USCT</span>
+        <span class="pill solid">Image reconstruction</span>
+        <span class="pill">Ultrasound physics</span>
+        <span class="pill">HIFU therapy</span>
+        <span class="pill">FPGA front-end</span>
+        <span class="pill">k-Wave simulation</span>
+        <span class="pill">MATLAB · Python</span>
+        <span class="pill">Inverse problems</span>
+      </div>
+
+      <p class="expertise-prose">
+        At <b>Lily MedTech</b>, contributed to the development and 2021 commercial release of <b>COCOLY</b>, a ring-array USCT scanner for breast imaging. Led an internal R&amp;D project on <b>attenuation-map estimation from reflection-only echoes</b> (patent filed, JP &amp; EP).
+        <br><br>
+        PhD work proposed a <b>dictionary-based reconstruction</b> that delivers high-resolution USCT echo images under reduced data acquisition — a path toward faster, cheaper scans.
+      </p>
+    </div>
+
+    <!-- RIGHT: Publications -->
+    <div class="col">
+      <h3>Selected publications &amp; IP · recent 3 years</h3>
+
+      <ol class="pubs">
+        <li>
+          <span class="title placeholder">Publication title — to be filled in</span>.
+          <span class="venue">Venue / journal name</span><span class="year">2024</span>
+        </li>
+        <li>
+          <span class="title placeholder">Publication title — to be filled in</span>.
+          <span class="venue">Venue / conference name</span><span class="year">2023</span>
+        </li>
+        <li>
+          <span class="title placeholder">Patent title — to be filled in</span>.
+          <span class="venue">JP &amp; EP filing</span><span class="year">2023</span>
+        </li>
+        <li>
+          <span class="title placeholder">Publication / talk title — to be filled in</span>.
+          <span class="venue">Venue</span><span class="year">2022</span>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="slide-foot">
+    <span>Thank you — happy to dive into any of the above</span>
+    <span>Tianhan Tang · 2026</span>
+  </div>
+</section>
+
+</body>
+</html>
