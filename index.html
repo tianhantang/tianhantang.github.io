@@ -444,6 +444,89 @@
     letter-spacing: 0.06em;
   }
 
+  /* ---- responsive: tablet ---- */
+  @media (max-width: 960px) {
+    body { padding: 24px 12px; gap: 24px; }
+
+    .slide {
+      aspect-ratio: auto;
+      padding: 36px 32px;
+    }
+
+    .cover .body {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .cover .meta {
+      border-left: none;
+      padding-left: 0;
+      border-top: 1px solid var(--rule);
+      padding-top: 24px;
+    }
+    .cover .mark {
+      position: static;
+      margin-bottom: 12px;
+    }
+
+    .bio .body {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .focus .body {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  /* ---- responsive: phone ---- */
+  @media (max-width: 600px) {
+    body { padding: 16px 6px; gap: 16px; }
+
+    .slide {
+      padding: 24px 18px;
+    }
+
+    .slide-head { margin-bottom: 20px; }
+
+    .cover h1 {
+      font-size: clamp(32px, 8vw, 48px);
+      margin-bottom: 18px;
+    }
+    .cover .lede .kicker {
+      font-size: 10px;
+      margin-bottom: 16px;
+    }
+    .cover .role {
+      font-size: 17px;
+    }
+    .cover .meta-value { font-size: 15px; }
+
+    .bio h2,
+    .focus h2 {
+      font-size: 28px;
+    }
+    .bio .intro { font-size: 15px; }
+
+    .photos {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+    .photo.wide { grid-column: auto; }
+    .photo { min-height: 180px; }
+
+    .pubs li {
+      padding-left: 24px;
+      font-size: 13px;
+    }
+    .pubs li::before { font-size: 9px; }
+
+    .slide-foot { font-size: 9px; flex-wrap: wrap; gap: 4px; }
+
+    .expertise-prose { font-size: 14px; }
+  }
+
   /* print */
   @media print {
     body { padding: 0; background: white; gap: 0; }
